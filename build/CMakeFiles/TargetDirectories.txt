@@ -1,0 +1,3 @@
+C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/build/CMakeFiles/app.dir
+C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/build/CMakeFiles/edit_cache.dir
+C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/build/CMakeFiles/rebuild_cache.dir
