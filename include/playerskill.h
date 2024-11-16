@@ -43,27 +43,35 @@ struct PlayerSkill
     int xp;
 };
 
-struct PlayerType
+enum PlayerType_
 {
-    std::string normalAccount = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
-    std::string ironmanAccount = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=";
-    std::string ultimateironmanAccount = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=";
-    std::string hardcoreironmanAccount = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=";
+    PlayerType_Normal = 1 << 0,
+    PlayerType_Ironman = 1 << 1,
+    PlayerType_Ultimate = 1 << 2,
+    PlayerType_Hardcore = 1 << 3
 };
+
+typedef int PlayerType;
 
 class PlayerInfo
 
 {
 public:
     std::string playerName;
-    int playerId;
     std::vector<PlayerSkill> skills;
-    std::vector<PlayerType> mode;
 
+    void dump();
+    bool operator==(const PlayerInfo& other) const;
     static PlayerInfo createFromResponse(const std::string& response);
     static std::string skillTypeToString(SkillType type);
-    static std::string grabHiscores(HttpClient* httpclient);
-    static std::string grabPlayerMode(HttpClient * httpclient);
+    static std::string getHiscores(HttpClient* httpclient, const std::string& playerName);
+    static std::string getPlayer();
+    static PlayerType getPlayerType(HttpClient* httpclient, const std::string& playerName);
+    static bool getScores(HttpClient* httpclient, const std::string& playerName, PlayerType playerType, PlayerInfo &playerInfo);
+    static bool isPlayerTypeNormal(HttpClient* httpclient, const std::string& playerName);
+    static bool isPlayerTypeIronman(HttpClient* httpclient, const std::string& playerName);
+    static bool isPlayerTypeUltimate(HttpClient* httpclient, const std::string& playerName);
+    static bool isPlayerTypeHardcore(HttpClient* httpclient, const std::string& playerName);
 };
 
 #endif

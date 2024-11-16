@@ -4,6 +4,13 @@
 #include <cctype>
 #include <limits>
 
+std::string PlayerInfo::getPlayer(){
+    std::string name;
+    std::cout << "Enter a username (ENTER or Ctrl+C to close): ";
+    std::getline(std::cin, name);
+    return name;
+}
+
 std::vector<std::string> splitStringByNewline(const std::string& input) {
     std::vector<std::string> lines;
     std::istringstream stream(input);
@@ -127,21 +134,7 @@ std::string PlayerInfo::skillTypeToString(SkillType type) {
     return skillTypeString[index];
 }
 
-// std::string PlayerInfo::grabPlayerMode(HttpClient* httpclient) {
-
-//     int page1 = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=");
-//     int page2 = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=");
-//     int page3 = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=");
-//     int page4 = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=");
-
-
-// }
-
-std::string PlayerInfo::grabHiscores(HttpClient* httpclient) {
-
-    std::string playerName;
-    std::cout << "Enter a username (ENTER or Ctrl+C to close): ";
-    std::getline(std::cin, playerName);
+std::string PlayerInfo::getHiscores(HttpClient* httpclient, const std::string& playerName) {
 
     if(playerName.empty()) {
         std::cout << "Program closing...\n";
@@ -151,11 +144,13 @@ std::string PlayerInfo::grabHiscores(HttpClient* httpclient) {
     std::string url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" + playerName;
     std::cout << "\nGrabbing hiscores from: " + url + "\n\n";
 
-    int result = httpclient->get(url);
+    HttpResponse response;
+    int result = httpclient->get(url, response);
     std::string outputText;
 
     if (result == 0) {
-        PlayerInfo info = PlayerInfo::createFromResponse(httpclient->getResponse());
+
+        PlayerInfo info = PlayerInfo::createFromResponse(response.getContent());
 
         std::cout << "0:Overall, 1:Attack, 2:Defence, 3:Strength, 4:Hitpoints, 5:Ranged, 6:Prayer, 7:Magic, 8:Cooking,\n"
                 << "9:Woodcutting, 10:Fletching, 11:Fishing, 12:Firemaking, 13:Crafting, 14:Smithing, 15:Mining, 16:Herblore,\n"
@@ -189,4 +184,177 @@ std::string PlayerInfo::grabHiscores(HttpClient* httpclient) {
     }
 
     return "";
+}
+
+bool PlayerInfo::isPlayerTypeNormal(HttpClient* httpclient, const std::string& playerName){
+    HttpResponse response;
+    int status = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" + playerName, response);
+
+    if(status == 0) {
+        return response.getStatusCode() == 200;
+    }
+    return false;
+}
+
+bool PlayerInfo::isPlayerTypeIronman(HttpClient* httpclient, const std::string& playerName){
+    HttpResponse response;
+    int status = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" + playerName, response);
+
+    if(status == 0) {
+        return response.getStatusCode() == 200;
+    }
+    return false;
+}
+
+bool PlayerInfo::isPlayerTypeUltimate(HttpClient* httpclient, const std::string& playerName){
+    HttpResponse response;
+    int status = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" + playerName, response);
+
+    if(status == 0) {
+        return response.getStatusCode() == 200;
+    }
+    return false;
+}
+
+bool PlayerInfo::isPlayerTypeHardcore(HttpClient* httpclient, const std::string& playerName){
+    HttpResponse response;
+    int status = httpclient->get("https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" + playerName, response);
+
+    if(status == 0) {
+        return response.getStatusCode() == 200;
+    }
+    return false;
+}
+
+bool PlayerInfo::getScores(HttpClient* httpclient, const std::string& playerName, PlayerType playerType, PlayerInfo &playerInfo) {
+    std::string url;
+
+    switch(playerType) {
+        case PlayerType_Normal:
+            url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
+            break;
+        case PlayerType_Ironman:
+            url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=";
+            break;
+        case PlayerType_Ultimate:
+            url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=";
+            break;
+        case PlayerType_Hardcore:
+            url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=";
+            break;
+        default:
+            return false;
+    }
+
+    url += playerName;
+
+    HttpResponse response;
+    int result = httpclient->get(url, response);
+    std::string outputText;
+
+    if (result == 0) {
+        if(response.getStatusCode() == 200){
+            playerInfo = PlayerInfo::createFromResponse(response.getContent());
+            playerInfo.playerName = playerName;
+            return true;
+        }
+    }
+    return false;
+}
+
+void PlayerInfo::dump() {
+
+    std::cout << "0:Overall, 1:Attack, 2:Defence, 3:Strength, 4:Hitpoints, 5:Ranged, 6:Prayer, 7:Magic, 8:Cooking,\n"
+            << "9:Woodcutting, 10:Fletching, 11:Fishing, 12:Firemaking, 13:Crafting, 14:Smithing, 15:Mining, 16:Herblore,\n"
+            << "17:Agility, 18:Thieving, 19:Slayer, 20:Farming, 21:Runecraft, 22:Hunter, 23:Construction\n\n";
+
+    std::cout << "Enter skill number (0-23) to view the current xp in that skill: ";
+    int skillIndex;
+    std::cin >> skillIndex;
+    std::cout << "\n";
+
+    if (skillIndex >= 1 && skillIndex < skills.size()) {
+        PlayerSkill skill = skills[skillIndex];
+        std::cout << "Skill: " << PlayerInfo::skillTypeToString(skill.type) << '\n';
+        std::cout << "Rank: " << skill.rank
+                << "\nLevel: " << skill.level
+                << "\nXP: " << skill.xp << '\n';
+    }
+    else if (skillIndex < 0) {
+        std::cout << "Exiting skill lookup.\n";
+    }
+
+    if (skillIndex == 0 && skillIndex < skills.size()) {
+        std::string outputText;
+        for (int i = 0; i < skills.size(); i++) {
+            outputText += PlayerInfo::skillTypeToString(skills[i].type) +
+                        " Rank: " + std::to_string(skills[i].rank) +
+                        " Level: " + std::to_string(skills[i].level) +
+                        " XP: " + std::to_string(skills[i].xp) + "\n";
+        }
+        std::cout << outputText << "\n";
+    }
+}
+
+bool PlayerInfo::operator==(const PlayerInfo& other) const {
+    if (playerName != other.playerName) return false;
+    if(skills.size() != other.skills.size()) return false;
+
+    for(size_t i = 0; i < skills.size(); i++) {
+        if(skills[i].type != other.skills[i].type)
+            return false;
+        if(skills[i].rank != other.skills[i].rank)
+            return false;
+        if(skills[i].level != other.skills[i].level)
+            return false;
+        if(skills[i].xp != other.skills[i].xp)
+            return false;
+    }
+    return true;
+}
+
+PlayerType PlayerInfo::getPlayerType(HttpClient* client, const std::string& playerName){
+    PlayerInfo infoOverall;
+    PlayerInfo infoIronman;
+    PlayerInfo infoUltimate;
+    PlayerInfo infoHardcore;
+
+    // std::string player = PlayerInfo::getPlayer();
+    PlayerType playerType = 0;
+
+    if(PlayerInfo::getScores(client, playerName, PlayerType_Normal, infoOverall)){
+        playerType |= PlayerType_Normal;
+    }
+
+    if(PlayerInfo::getScores(client, playerName, PlayerType_Ironman, infoIronman)){
+        playerType |= PlayerType_Ironman;
+    }
+
+    if(PlayerInfo::getScores(client, playerName, PlayerType_Ultimate, infoUltimate)){
+        playerType |= PlayerType_Ultimate;
+    }
+
+    if(PlayerInfo::getScores(client, playerName, PlayerType_Hardcore, infoHardcore)){
+        playerType |= PlayerType_Hardcore;
+    }
+
+    if((playerType & PlayerType_Normal) && (playerType & PlayerType_Ironman) && (playerType & PlayerType_Hardcore)) {
+        if(infoHardcore.skills[(int)SkillType::Overall].xp == infoIronman.skills[(int)SkillType::Overall].xp){
+            return PlayerType_Hardcore;
+        }
+        else {
+            return PlayerType_Ironman;
+        }
+    }
+    else if((playerType & PlayerType_Normal) && (playerType & PlayerType_Ironman) && (playerType & PlayerType_Ultimate)) {
+            return PlayerType_Ultimate;
+    }
+
+    else if((playerType & PlayerType_Normal) && (playerType & PlayerType_Ironman)) {
+            return PlayerType_Ironman;
+    } else {
+            return PlayerType_Normal;
+    }
+
+    return 0;
 }
