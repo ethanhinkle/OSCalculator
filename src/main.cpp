@@ -4,7 +4,7 @@
 #include <csignal>
 #include <memory>
 #include "httpclient.h"
-#include "playerskill.h"
+#include "playerinfo.h"
 
 int main() {
     HttpClient client;

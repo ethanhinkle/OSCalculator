@@ -1,4 +1,4 @@
-#include "playerskill.h"
+#include "playerinfo.h"
 #include <sstream>
 #include <iostream>
 #include <cctype>

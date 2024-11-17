@@ -98,33 +98,33 @@ CMakeFiles/app.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/main.cpp.s"
 	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\main.cpp -o CMakeFiles\app.dir\src\main.cpp.s
 
-CMakeFiles/app.dir/src/playerskill.cpp.obj: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/playerskill.cpp.obj: CMakeFiles/app.dir/includes_CXX.rsp
-CMakeFiles/app.dir/src/playerskill.cpp.obj: C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/src/playerskill.cpp
-CMakeFiles/app.dir/src/playerskill.cpp.obj: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/app.dir/src/playerskill.cpp.obj"
-	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/playerskill.cpp.obj -MF CMakeFiles\app.dir\src\playerskill.cpp.obj.d -o CMakeFiles\app.dir\src\playerskill.cpp.obj -c C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerskill.cpp
+CMakeFiles/app.dir/src/playerinfo.cpp.obj: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/playerinfo.cpp.obj: CMakeFiles/app.dir/includes_CXX.rsp
+CMakeFiles/app.dir/src/playerinfo.cpp.obj: C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/src/playerinfo.cpp
+CMakeFiles/app.dir/src/playerinfo.cpp.obj: CMakeFiles/app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/app.dir/src/playerinfo.cpp.obj"
+	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/playerinfo.cpp.obj -MF CMakeFiles\app.dir\src\playerinfo.cpp.obj.d -o CMakeFiles\app.dir\src\playerinfo.cpp.obj -c C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerinfo.cpp
 
-CMakeFiles/app.dir/src/playerskill.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/playerskill.cpp.i"
-	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerskill.cpp > CMakeFiles\app.dir\src\playerskill.cpp.i
+CMakeFiles/app.dir/src/playerinfo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/playerinfo.cpp.i"
+	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerinfo.cpp > CMakeFiles\app.dir\src\playerinfo.cpp.i
 
-CMakeFiles/app.dir/src/playerskill.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/playerskill.cpp.s"
-	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerskill.cpp -o CMakeFiles\app.dir\src\playerskill.cpp.s
+CMakeFiles/app.dir/src/playerinfo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/playerinfo.cpp.s"
+	C:\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerinfo.cpp -o CMakeFiles\app.dir\src\playerinfo.cpp.s
 
 # Object files for target app
 app_OBJECTS = \
 "CMakeFiles/app.dir/src/httpclient.cpp.obj" \
 "CMakeFiles/app.dir/src/main.cpp.obj" \
-"CMakeFiles/app.dir/src/playerskill.cpp.obj"
+"CMakeFiles/app.dir/src/playerinfo.cpp.obj"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
 
 app.exe: CMakeFiles/app.dir/src/httpclient.cpp.obj
 app.exe: CMakeFiles/app.dir/src/main.cpp.obj
-app.exe: CMakeFiles/app.dir/src/playerskill.cpp.obj
+app.exe: CMakeFiles/app.dir/src/playerinfo.cpp.obj
 app.exe: CMakeFiles/app.dir/build.make
 app.exe: C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/libs/curl/libcurl.dll.a
 app.exe: CMakeFiles/app.dir/linkLibs.rsp

@@ -176,29 +176,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/playerskill.obj: src/playerskill.cpp.obj
-.PHONY : src/playerskill.obj
+src/playerinfo.obj: src/playerinfo.cpp.obj
+.PHONY : src/playerinfo.obj
 
 # target to build an object file
-src/playerskill.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/playerskill.cpp.obj
-.PHONY : src/playerskill.cpp.obj
+src/playerinfo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/playerinfo.cpp.obj
+.PHONY : src/playerinfo.cpp.obj
 
-src/playerskill.i: src/playerskill.cpp.i
-.PHONY : src/playerskill.i
+src/playerinfo.i: src/playerinfo.cpp.i
+.PHONY : src/playerinfo.i
 
 # target to preprocess a source file
-src/playerskill.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/playerskill.cpp.i
-.PHONY : src/playerskill.cpp.i
+src/playerinfo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/playerinfo.cpp.i
+.PHONY : src/playerinfo.cpp.i
 
-src/playerskill.s: src/playerskill.cpp.s
-.PHONY : src/playerskill.s
+src/playerinfo.s: src/playerinfo.cpp.s
+.PHONY : src/playerinfo.s
 
 # target to generate assembly for a file
-src/playerskill.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/playerskill.cpp.s
-.PHONY : src/playerskill.cpp.s
+src/playerinfo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/src/playerinfo.cpp.s
+.PHONY : src/playerinfo.cpp.s
 
 # Help Target
 help:
@@ -215,9 +215,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
-	@echo ... src/playerskill.obj
-	@echo ... src/playerskill.i
-	@echo ... src/playerskill.s
+	@echo ... src/playerinfo.obj
+	@echo ... src/playerinfo.i
+	@echo ... src/playerinfo.s
 .PHONY : help
 
 

@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/src/httpclient.cpp" "CMakeFiles/app.dir/src/httpclient.cpp.obj" "gcc" "CMakeFiles/app.dir/src/httpclient.cpp.obj.d"
   "C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/src/main.cpp" "CMakeFiles/app.dir/src/main.cpp.obj" "gcc" "CMakeFiles/app.dir/src/main.cpp.obj.d"
-  "C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/src/playerskill.cpp" "CMakeFiles/app.dir/src/playerskill.cpp.obj" "gcc" "CMakeFiles/app.dir/src/playerskill.cpp.obj.d"
+  "C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/src/playerinfo.cpp" "CMakeFiles/app.dir/src/playerinfo.cpp.obj" "gcc" "CMakeFiles/app.dir/src/playerinfo.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,6 +1,6 @@
-CMakeFiles/app.dir/src/playerskill.cpp.obj: \
- C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerskill.cpp \
- C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/include/playerskill.h \
+CMakeFiles/app.dir/src/playerinfo.cpp.obj: \
+ C:\Users\zseth\Desktop\Dev\CPP\OSCalculator\src\playerinfo.cpp \
+ C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/include/playerinfo.h \
  C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/include/httpclient.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/iostream \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/requires_hosted.h \

@@ -176,5 +176,5 @@ CMakeFiles/app.dir/src/main.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/enable_special_members.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/node_handle.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/erase_if.h \
- C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/include/playerskill.h \
+ C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/include/playerinfo.h \
  C:/Users/zseth/Desktop/Dev/CPP/OSCalculator/include/httpclient.h
